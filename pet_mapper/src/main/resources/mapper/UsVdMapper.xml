@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UsVdMapper">
+<!--视频评论查询-->
+<select id="queryCommentByUserAndVideo" resultType="po.UsVd">
+    select * from pet_usvd WHERE video_id=#{videoId}
+</select>
+<!--插入视频评论-->
+<insert id="insertComments" parameterType="po.UsVd" useGeneratedKeys="true"
+        keyProperty="id">
+    insert into pet_usvd (comment,thumb_up,user_id,video_id)
+    VALUES (#{comment}, #{thumb_up},#{user.id},#{video.id})
+</insert>
+</mapper>
